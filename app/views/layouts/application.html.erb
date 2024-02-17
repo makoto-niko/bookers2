@@ -13,18 +13,41 @@
   <header>
       <% if user_signed_in? %>
         <li>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          
+          <ul>
+          <%= link_to "Bookers", root_path %>
+            <nav>
+            <%= link_to "Home",root_path %>
+            <%= link_to "Users", users_path %>
+            <%= link_to "books", books_path %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+            </nav>
+          </ul>
         </li>
       <% else %>
         <li>
-          <%= link_to "新規登録", new_user_registration_path %>
-        </li>
-        <li>
-          <%= link_to "ログイン", new_user_session_path %>
-        </li>
+          <%= link_to "Bookers", root_path %>
+          <nav>
+            <%= link_to "Home", root_path %>
+            <%= link_to "About", homes_about_path %>
+            <%= link_to "Sing up",new_user_registration_path %>
+            <%= link_to "Log in",user_session_path %>
+          </nav>  
+         </li>
       <% end %>
     </header>
   <body>
     <%= yield %>
   </body>
+  
+  <footer>
+    <div class="container mt-5">
+  	<div class="row">
+    	<div class="mx-auto">
+    		<p>CopyRight Infratop.inc</p>
+    	</div>
+    </div>
+  </div>
+  </footer>
+  
 </html>
