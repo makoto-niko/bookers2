@@ -6,7 +6,9 @@
     <% end %>
   </ul>
 <% end %>
+
 <div class="container px-5 px-sm-0">
+<%= flash[:notice] %>
 <div class="row">
 <div class="col-md-3"> 
     <%= render partial: 'userinfo', locals: {user: @user, book: @book} %>
