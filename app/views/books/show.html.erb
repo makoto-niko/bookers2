@@ -2,7 +2,7 @@
 <%= flash[:notice] %>
 <div class="row">
 <div class="col-md-3"> 
-    <%= render partial: 'books/userinfo', locals: {user: @user, book: @book} %>
+    <%= render partial: 'books/userinfo', locals: {user: @user, book: Book.new} %>
 </div>
 <div class="col-md-8 offset-md-1">
     <h2>Book detail</h2>
@@ -16,8 +16,10 @@
                 </td>
                 <td><%= link_to @book.title, book_path %></td>
                 <td><%= @book.body %></td>
-                <td><%= link_to 'Edit', edit_book_path(@book), class: 'btn btn-sm btn-success' %></td>
-                <td><%= link_to 'Destroy', book_path(@book), method: :delete, data: { confirm: '本当に消しますか?' } , class: 'btn btn-sm btn-danger' %></td>
+                <% if @book.user == current_user %>
+                    <td><%= link_to 'Edit', edit_book_path(@book), class: 'btn btn-sm btn-success' %></td>
+                    <td><%= link_to 'Destroy', book_path(@book), method: :delete, data: { confirm: '本当に消しますか?' } , class: 'btn btn-sm btn-danger' %></td>
+                <% end %>
             </tr>
         </tbody>
     </table>
